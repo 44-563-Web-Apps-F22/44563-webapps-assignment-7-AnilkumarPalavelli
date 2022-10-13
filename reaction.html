@@ -20,37 +20,28 @@
   <button type="button" class="btn btn-warning" onclick="startTime()">  Start Timer</button>
   <button type="button" class="btn btn-danger" onclick="recordReact()">  React Now</button>
   <script> 
-   var myTime=undefined
-    
-    function recordReact() {
-        myTime=Date.now()
-        console.log(myTime)
+  let myTime =undefined;
+  function recordReact(){
+    myTime=Date.now();
+    console.log(myTime);
+  }
+  function startTime(){
+    for(let i=0;i<4;i++){
+     setTimeout( () =>{
+    document.getElementById('countdown').innerHTML = i;
+        } , (3-i)*1000);        
     }
-
-    function startTime(){
-        var startCount=Math.floor(Math.random()*8)+2
-      for(let i=0;i<=startCount;i++){
-        setTimeout(()=>{
-        document.getElementById('countdown').innerHTML = "Countdown "+i
-        }, (startCount-i)*1000)
-      }
-
-      setTimeout(()=>{
-        checkTime()}, startCount*1000)
-
-    }
-
-    function checkTime(){   
-
-        if(myTime==undefined){
-            document.getElementById('target').innerHTML = "Too slow"
-        }       
-        else{
-            var buttonTime=Date.now()
-            document.getElementById('target').innerHTML = "Time was "+ (buttonTime-myTime)
+    setTimeout( () =>{
+        if (myTime==undefined){
+            document.getElementById('target').innerHTML = " Too Slow";
         }
-    }
-
+        else{
+            var buttonTime = Date.now()
+            var difference = buttonTime - myTime
+            document.getElementById('target').innerHTML = " Time was "+difference
+        }
+            }, 3000)
+  }
   </script>
 
 </body>
